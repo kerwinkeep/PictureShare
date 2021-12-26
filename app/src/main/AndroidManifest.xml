@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PictureShare">
         <activity
-            android:name=".MainActivity"
+            android:name=".IndexActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

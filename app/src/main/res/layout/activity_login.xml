@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" >
+
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" >
+
+            <!--            账号、密码输入-->
+            <RelativeLayout
+                android:id="@+id/edit_layout_account"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:id="@+id/icon_account"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_outline_account_circle_24" />
+
+                <EditText
+                    android:id="@+id/edittext_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/icon_account"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignBottom="@id/icon_account"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:background="@drawable/round_editstyle"
+                    android:hint="@string/text_hint_username"
+                    android:importantForAutofill="no"/>
+
+            <!--        密码-->
+                <ImageView
+                    android:id="@+id/icon_password"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/icon_account"
+                    android:layout_alignStart="@id/icon_account"
+                    android:layout_alignEnd="@id/icon_account"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_outline_lock_24" />
+
+                <EditText
+                    android:id="@+id/edittext_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/edittext_account"
+                    android:layout_alignEnd="@id/edittext_account"
+                    android:layout_alignBottom="@id/icon_password"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:importantForAutofill="no"
+                    android:hint="@string/text_hint_password"
+                    android:background="@drawable/round_editstyle"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/password_visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/edittext_password"
+                    android:layout_alignBottom="@id/edittext_password"
+                    android:layout_alignEnd="@id/edittext_password"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_outline_visibility_off_24" />
+
+            </RelativeLayout>
+
+            <!--        登陆按钮-->
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/edit_layout_account"
+                android:layout_marginTop="8dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/gologin"/>
+            <!--        button_login-->
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/transparent"
+        android:text="@string/register" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_register"
+        android:text="@string/find_password"
+        android:background="@android:color/transparent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
