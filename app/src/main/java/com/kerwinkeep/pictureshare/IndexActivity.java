@@ -2,9 +2,12 @@ package com.kerwinkeep.pictureshare;
 
 import android.Manifest;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,7 +30,7 @@ import okhttp3.MediaType;
 
 public class IndexActivity extends AppCompatActivity {
 
-    private static String userId;
+    private String userId;
 
     private final int REQUEST_EXTERNAL_STORAGE = 1;
 
@@ -38,6 +41,27 @@ public class IndexActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private ActivityIndexBinding binding;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cart://增加点击事件
+                Intent intent = new Intent(this, ShareActivity.class);
+                intent.putExtra("id", userId);
+                getIntent().putExtra("id",userId);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

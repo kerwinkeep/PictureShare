@@ -87,26 +87,26 @@
                         android:inputType="textPassword"/>
 
                 <ImageView
-                        android:id="@+id/password_visible"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/edittext_password"
-                        android:layout_alignBottom="@id/edittext_password"
-                        android:layout_alignEnd="@id/edittext_password"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_outline_visibility_off_24"/>
+                    android:id="@+id/password_visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/edittext_password"
+                    android:layout_alignEnd="@id/edittext_password"
+                    android:layout_alignBottom="@id/edittext_password"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_outline_visibility_off_24" />
 
             </RelativeLayout>
 
             <!--        登陆按钮-->
             <Button
-                    android:id="@+id/button_login"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_below="@+id/edit_layout_account"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/gologin"/>
+                android:id="@+id/button_login"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/edit_layout_account"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/gologin" />
             <!--        button_login-->
         </RelativeLayout>
 
