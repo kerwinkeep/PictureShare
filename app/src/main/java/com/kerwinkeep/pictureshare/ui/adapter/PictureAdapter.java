@@ -1,6 +1,7 @@
 package com.kerwinkeep.pictureshare.ui.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,8 +36,10 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
     @NonNull
     @Override
     public PictureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.cardview_picture, null);
+//        View view = View.inflate(context, R.layout.cardview_picture, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_picture, parent, false);
         return new PictureViewHolder(view);
+
     }
 
     @Override
@@ -51,7 +54,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
         return pictureList == null ? 0 : pictureList.size();
     }
 
-    public class PictureViewHolder extends RecyclerView.ViewHolder {
+    public static class PictureViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView imageViewPicture;
         private final TextView textViewTitle;

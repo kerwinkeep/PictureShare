@@ -2,29 +2,31 @@ package com.kerwinkeep.pictureshare.bean;
 
 import android.graphics.Bitmap;
 
+import java.util.Date;
+
 public class Picture {
 
     String id;
 
     String userId;
 
-    String likeNum;
+    Bitmap pictureData;
+
+    Integer likeNum;
 
     String title;
-
-    Bitmap pictureData;
 
     String author;
 
     public Picture() {
     }
 
-    public Picture(String id, String userId, String likeNum, String title, Bitmap pictureData, String author) {
+    public Picture(String id, String userId, Bitmap pictureData, Integer likeNum, String title, String author) {
         this.id = id;
         this.userId = userId;
+        this.pictureData = pictureData;
         this.likeNum = likeNum;
         this.title = title;
-        this.pictureData = pictureData;
         this.author = author;
     }
 
@@ -44,11 +46,19 @@ public class Picture {
         this.userId = userId;
     }
 
-    public String getLikeNum() {
+    public Bitmap getPictureData() {
+        return pictureData;
+    }
+
+    public void setPictureData(Bitmap pictureData) {
+        this.pictureData = pictureData;
+    }
+
+    public Integer getLikeNum() {
         return likeNum;
     }
 
-    public void setLikeNum(String likeNum) {
+    public void setLikeNum(Integer likeNum) {
         this.likeNum = likeNum;
     }
 
@@ -60,14 +70,6 @@ public class Picture {
         this.title = title;
     }
 
-    public Bitmap getPictureData() {
-        return pictureData;
-    }
-
-    public void setPictureData(Bitmap pictureData) {
-        this.pictureData = pictureData;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -75,4 +77,5 @@ public class Picture {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }

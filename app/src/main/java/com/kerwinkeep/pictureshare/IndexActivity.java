@@ -1,6 +1,7 @@
 package com.kerwinkeep.pictureshare;
 
 import android.Manifest;
+import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.kerwinkeep.pictureshare.bean.Picture;
 import com.kerwinkeep.pictureshare.databinding.ActivityIndexBinding;
+import com.kerwinkeep.pictureshare.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +38,6 @@ public class IndexActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private ActivityIndexBinding binding;
-
-    private List<Picture> pictureList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

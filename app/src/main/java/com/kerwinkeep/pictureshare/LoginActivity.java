@@ -2,6 +2,7 @@ package com.kerwinkeep.pictureshare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                response.body().close();
 //            }
 //        });
-        return false;
+        return true;
     }
 
     @Override
@@ -77,7 +78,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (verifyLogin(accountEditText.getText().toString(), passwordEditText.getText().toString())) {
                 // 通过条件判断，登陆验证通过
                 // 跳转
-
+                Intent intent = new Intent(this, IndexActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
 
         }
