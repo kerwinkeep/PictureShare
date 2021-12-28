@@ -7,26 +7,111 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:id="@+id/textViewHint"
+        android:layout_width="262dp"
+        android:layout_height="50dp"
+        android:text="@string/register_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:id="@+id/textViewRegisterAccountHint"
+        android:layout_width="244dp"
+        android:layout_height="27dp"
+        android:text="@string/input_account_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintTop_toBottomOf="@+id/edittextRegisterUserName"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <EditText
+        android:id="@+id/editViewRegisterAccount"
+        android:layout_width="272dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterAccountHint" />
+
+    <TextView
+        android:id="@+id/textViewRegisterPasswordHint"
+        android:layout_width="244dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/input_password_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editViewRegisterAccount" />
+
+    <EditText
+        android:id="@+id/editViewRegisterPassword"
+        android:layout_width="272dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterPasswordHint" />
+
+    <TextView
+        android:id="@+id/textViewRegisterConfirmPasswordHint"
+        android:layout_width="244dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/confirm_password_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editViewRegisterPassword" />
+
+    <EditText
+        android:id="@+id/editViewRegisterConfirmPassword"
+        android:layout_width="272dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterConfirmPasswordHint" />
+
+    <Button
+        android:id="@+id/buttonCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/create_account_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editViewRegisterConfirmPassword" />
+
+    <TextView
+        android:id="@+id/textViewRegisterUserNameHint"
+        android:layout_width="244dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/input_username_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHint" />
+
+    <EditText
+        android:id="@+id/edittextRegisterUserName"
+        android:layout_width="272dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterUserNameHint" />
 </androidx.constraintlayout.widget.ConstraintLayout>

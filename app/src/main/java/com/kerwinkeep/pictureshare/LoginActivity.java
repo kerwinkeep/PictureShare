@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public boolean verifyLogin(String account, String password) {//登录
 
         String url = "http://10.0.2.2:8081/user/login";
+//        String url = "http://35.241.95.124:8081/user/login";
         OkHttpClient client = new OkHttpClient();
         //构建表单参数
         HashMap<String,String> map = new HashMap<>();
@@ -95,10 +96,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    String id = (String) msg.obj;
+                    String userId = (String) msg.obj;
                     Intent intent = new Intent(LoginActivity.this, IndexActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("id", id);
-                    Log.d("Login", id);
+                    intent.putExtra("userId", userId);
+                    Log.d("Login", userId);
                     startActivity(intent);
                     break;
             }

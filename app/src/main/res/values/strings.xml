@@ -19,4 +19,10 @@
     <string name="upload">上传</string>
     <string name="select_picture_hint">选择图片</string>
     <string name="upload_hint">上传</string>
+    <string name="create_account_hint">CREATE ACCOUNT</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="input_password_hint">Password</string>
+    <string name="input_account_hint">Account</string>
+    <string name="register_hint">REGISTER</string>
+    <string name="input_username_hint">UserName</string>
 </resources>

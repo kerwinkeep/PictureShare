@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -51,7 +50,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-
+        pictureAdapter = new PictureAdapter(getActivity(), homeViewModel);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         recyclerView = binding.recyclerviewIndex;
         View root = binding.getRoot();
@@ -77,7 +76,8 @@ public class HomeFragment extends Fragment {
 
     public void getPicture(){//发送获取主页面数据
 
-        String url="http://35.241.95.124:8081/picture/getPictures";
+//        String url="http://35.241.95.124:8081/picture/getPictures";
+        String url="http://10.0.2.2:8081/picture/getPictures";
         OkHttpClient client=new OkHttpClient();
         //构建表单参数
         FormBody.Builder requestBuild = new FormBody.Builder();

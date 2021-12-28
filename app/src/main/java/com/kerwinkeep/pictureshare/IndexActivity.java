@@ -51,10 +51,10 @@ public class IndexActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_cart://增加点击事件
+            case R.id.action_cart:
                 Intent intent = new Intent(this, ShareActivity.class);
-                intent.putExtra("id", userId);
-                getIntent().putExtra("id",userId);
+                intent.putExtra("userId", userId);
+                getIntent().putExtra("userId",userId);
                 startActivity(intent);
                 break;
             default:
@@ -70,7 +70,7 @@ public class IndexActivity extends AppCompatActivity {
         binding = ActivityIndexBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        userId = getIntent().getStringExtra("id");
+        userId = getIntent().getStringExtra("userId");
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

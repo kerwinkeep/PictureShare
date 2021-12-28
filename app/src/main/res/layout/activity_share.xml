@@ -7,6 +7,7 @@
     tools:context=".ShareActivity">
 
     <EditText
+        android:id="@+id/editTextUploadTitle"
         android:layout_width="293dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,28 +19,38 @@
 
     <Button
         android:id="@+id/button_select_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
         android:text="@string/select_picture_hint"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="162dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageViewUploadPicture"
         android:layout_width="351dp"
         android:layout_height="277dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="227dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
         android:id="@+id/buttonUpload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
         android:text="@string/upload_hint"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="520dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.762"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

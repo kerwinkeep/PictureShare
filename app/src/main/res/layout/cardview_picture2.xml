@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+                                   android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--            图片-->
+
+        <!--            title-->
+        <!--            author-->
+
+
+        <!--            点赞图标-->
+
+        <!--            保存图标-->
+
+        <!--            分享图标-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_picture2"
+            android:layout_width="348dp"
+            android:layout_height="232dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="8"
+            android:src="@drawable/ic_outline_person_outline_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_picture_title2"
+            android:layout_width="295dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="@string/title_profile"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_picture2"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_picture_author2"
+            android:layout_width="295dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="@string/title_profile"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_picture_title2"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_like2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/like"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.957"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.057" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toEndOf="@+id/imageview_picture2"
+            app:layout_constraintVertical_bias="0.028" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_share2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.957"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_save2"
+            app:layout_constraintVertical_bias="0.039"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textViewLikeNum2"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.681"
+            app:layout_constraintStart_toEndOf="@+id/imageview_picture2"
+            app:layout_constraintTop_toBottomOf="@+id/button_like2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
