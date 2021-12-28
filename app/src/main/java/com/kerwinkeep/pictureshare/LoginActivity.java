@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
     public boolean verifyLogin(String account, String password) {//登录
 //        String url = "http://106.52.126.68:8200/user/login";
 //        OkHttpClient client = new OkHttpClient();
