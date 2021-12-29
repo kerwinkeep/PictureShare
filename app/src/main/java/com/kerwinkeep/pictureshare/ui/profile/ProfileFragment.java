@@ -55,7 +55,7 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         profileViewModel =
                 new ViewModelProvider(this).get(ProfileViewModel.class);
-        pictureAdapter = new PersonPictureAdapter(getActivity());
+        pictureAdapter = new PersonPictureAdapter(getActivity(), profileViewModel);
         userId = ((IndexActivity)getActivity()).getUserID();
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

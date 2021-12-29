@@ -80,7 +80,17 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/share" />
+
+            <!--            分享图标-->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_delete"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/delete" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>

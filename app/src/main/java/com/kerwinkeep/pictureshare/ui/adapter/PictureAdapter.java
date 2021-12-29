@@ -1,5 +1,6 @@
 package com.kerwinkeep.pictureshare.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -156,6 +157,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
             buttonLike = itemView.findViewById(R.id.button_like);
             buttonSave = itemView.findViewById(R.id.button_save);
             buttonShare = itemView.findViewById(R.id.button_share);
+            itemView.findViewById(R.id.button_delete).setVisibility(View.GONE);
         }
     }
 

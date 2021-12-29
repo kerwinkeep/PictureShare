@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +19,39 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.kerwinkeep.pictureshare.IndexActivity;
 import com.kerwinkeep.pictureshare.R;
 import com.kerwinkeep.pictureshare.bean.Picture;
+import com.kerwinkeep.pictureshare.ui.home.HomeViewModel;
 import com.kerwinkeep.pictureshare.ui.profile.ProfileViewModel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdapter.PersonPictureViewHolder> {
 
     private List<Picture> pictureList;
     private final Context context;
+    private static ProfileViewModel profileViewModel;
 
     public PersonPictureAdapter(Context context) {
         this.context = context;
@@ -40,6 +61,11 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
     public PersonPictureAdapter(List<Picture> pictureList, Context context) {
         this.pictureList = pictureList;
         this.context = context;
+    }
+
+    public PersonPictureAdapter(Context context, ProfileViewModel profileViewModel) {
+        this.context = context;
+        this.profileViewModel = profileViewModel;
     }
 
     public void setPictureList(List<Picture> pictureList) {
@@ -96,7 +122,63 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
                 context.startActivity(intent);
             }
         });
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletePicture(pictureList.get(position).getId());
+                pictureList.remove(position);
+                notifyDataSetChanged();
+                MutableLiveData<List<Picture>> livePictureList = profileViewModel.getLivePersonPictureList();
+                livePictureList.setValue(pictureList);
+                profileViewModel.setLivePersonPictureList(livePictureList);
+            }
+        });
     }
+
+    private void deletePicture(String id) {
+        String url="http://10.0.2.2:8081/picture/deletePicture";
+        OkHttpClient client = new OkHttpClient();
+        HashMap<String,String> map = new HashMap<>();
+        map.put("id", id);
+        Gson gson = new Gson();
+        String data = gson.toJson(map);
+        //添加请求体
+        RequestBody formBody;
+        formBody = RequestBody.create(IndexActivity.JSON,data);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build();
+        //异步请求
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("delete", "连接失败" +
+                        e.getLocalizedMessage());
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                if(result.trim().equals("Deleted successfully.")){
+                    Log.d("delete", result);
+                    Message message= new Message();
+                    message.obj = result;
+                    message.what = 3;
+                    handler.sendMessage(message);
+                }else
+                    Log.d("delete", result);
+                response.body().close();
+            }
+        });
+    }
+    Handler handler = new Handler(Looper.getMainLooper())
+    { public void handleMessage(Message msg) {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        switch (msg.what) {
+            case 1:
+                break;
+        }
+    } };
 
     @Override
     public int getItemCount() {
@@ -110,6 +192,7 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
         private final TextView textViewLikeNum;
         private final Button buttonSave;
         private final Button buttonShare;
+        private final Button buttonDelete;
 
         public PersonPictureViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -118,6 +201,7 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
             textViewLikeNum = itemView.findViewById(R.id.textViewLikeNum);
             buttonSave = itemView.findViewById(R.id.button_save);
             buttonShare = itemView.findViewById(R.id.button_share);
+            buttonDelete = itemView.findViewById(R.id.button_delete);
         }
     }
 
