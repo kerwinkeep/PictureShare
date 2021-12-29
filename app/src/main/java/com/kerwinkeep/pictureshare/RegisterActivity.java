@@ -63,12 +63,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 //        if (R.id.buttonCreateAccount)
     }
 
-    public void register(String name, String account, String password) {//发送注册请求
+    public void register(String name, String account, String password) {
 
         String url = "http://10.0.2.2:8081/user/register";
         OkHttpClient client = new OkHttpClient();
-        //构建表单参数
-        FormBody.Builder requestBuild = new FormBody.Builder();
         //添加请求体
         HashMap<String,String> map = new HashMap<>();
         map.put("account", account);

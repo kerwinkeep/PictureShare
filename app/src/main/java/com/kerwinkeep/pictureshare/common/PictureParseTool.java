@@ -58,4 +58,33 @@ public class PictureParseTool {
         }
         return list;
     }
+
+    public static List<Map<String, Object>> jsonJXGetPictureNoName(String data) {//解析json数据
+
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        if(data != null) {
+            try {
+                JSONArray jsonArray = new JSONArray(data);
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    Long id = jsonArray.getJSONObject(i).getLong("id");
+                    Long userId = jsonArray.getJSONObject(i).getLong("userId");
+                    String title = jsonArray.getJSONObject(i).getString("title");
+                    Integer likeNum = jsonArray.getJSONObject(i).getInt("likeNum");
+                    String pictureData = jsonArray.getJSONObject(i).getString("pictureData");
+
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", id);
+                    map.put("userId", userId);
+                    map.put("title",title);
+                    map.put("likeNum",likeNum);
+                    map.put("pictureData",pictureData);
+                    list.add(map);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
 }
