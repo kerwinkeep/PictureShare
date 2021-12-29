@@ -31,16 +31,11 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
 
     private List<Picture> pictureList;
     private final Context context;
-//    private static ProfileViewModel profileViewModel;
 
     public PersonPictureAdapter(Context context) {
         this.context = context;
     }
 
-//    public PersonPictureAdapter(Context context, ViewModel ViewModel) {
-//        this.context = context;
-//        this.profileViewModel = profileViewModel;
-//    }
 
     public PersonPictureAdapter(List<Picture> pictureList, Context context) {
         this.pictureList = pictureList;

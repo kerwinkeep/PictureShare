@@ -71,7 +71,6 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
     @NonNull
     @Override
     public PictureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = View.inflate(context, R.layout.cardview_picture, null);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_picture, parent, false);
         PictureViewHolder viewHolder = new PictureViewHolder(view);
         return viewHolder;
@@ -124,8 +123,8 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
                         null,
                         null));
                 Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_SEND);//设置分享行为
-                intent.setType("image/*");//设置分享内容的类型
+                intent.setAction(Intent.ACTION_SEND);   //设置分享行为
+                intent.setType("image/*");              //设置分享内容的类型
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
                 intent = Intent.createChooser(intent, "分享");
                 context.startActivity(intent);
@@ -157,28 +156,22 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
             buttonLike = itemView.findViewById(R.id.button_like);
             buttonSave = itemView.findViewById(R.id.button_save);
             buttonShare = itemView.findViewById(R.id.button_share);
-
-//            imageViewPicture = itemView.findViewById(R.id.imageview_picture2);
-//            textViewTitle = itemView.findViewById(R.id.textview_picture_title2);
-//            textViewAuthor = itemView.findViewById(R.id.textview_picture_author2);
-//            textViewLikeNum = itemView.findViewById(R.id.textViewLikeNum);
         }
     }
 
-    public void giveLike(String pictureId){//发送点赞请求
+    public void giveLike(String pictureId) {
 
-        String url="http://10.0.2.2:8081/picture/giveLike";
-        OkHttpClient client=new OkHttpClient();
+        String url = "http://10.0.2.2:8081/picture/giveLike";
+        OkHttpClient client = new OkHttpClient();
         //构建表单参数
-        HashMap<String,String> map=new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
         map.put("id", pictureId);
-        Gson gson=new Gson();
-        String data=gson.toJson(map);
+        Gson gson = new Gson();
+        String data = gson.toJson(map);
         //添加请求体
         RequestBody formBody;
-        formBody=RequestBody.create(IndexActivity.JSON,data);
-
-        Request request=new Request.Builder()
+        formBody = RequestBody.create(IndexActivity.JSON, data);
+        Request request = new Request.Builder()
                 .url(url)
                 .post(formBody)
                 .build();
@@ -186,38 +179,36 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MainActivityPost---", "连接失败" + e.getLocalizedMessage());
+                Log.d("picture", "连接失败" + e.getLocalizedMessage());
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                if(result.trim().equals("Give a like successfully.")){
-                    Log.d("点赞成功---", result);
-                    Message message= new Message();
+                if (result.trim().equals("Give a like successfully.")) {
+                    Log.d("picture", result);
+                    Message message = new Message();
                     message.obj = result;
-                    message.what = 2; handler.sendMessage(message);
-                }else
-                    Log.d("点赞失败---", result);
+                    message.what = 2;
+                    handler.sendMessage(message);
+                } else
+                    Log.d("picture", result);
                 response.body().close();
             }
         });
     }
 
-    Handler handler = new Handler(Looper.getMainLooper())
-    { public void handleMessage(Message msg) {
-        List<Map<String, Object>> list;
-        switch (msg.what) {
-            case 1://获取主页面数据
-                list = ( List<Map<String, Object>>) msg.obj;
-                for(int j = 0 ; j < list.size() ; j ++){////////将数据绑定到adapter
-                    //b= (String) list.get(0).get("picture");
-                    //img1.setImageBitmap(base64ToBitmap(b));
-                };
-                break;
-            case 2://点赞，成功时该cardview 的zan加1
-                break;
-            case 3://上传
-                break;
+    Handler handler = new Handler(Looper.getMainLooper()) {
+        public void handleMessage(Message msg) {
+            List<Map<String, Object>> list;
+            switch (msg.what) {
+                case 1://获取主页面数据
+                    break;
+                case 2: //点赞
+                    break;
+                case 3: //上传
+                    break;
+            }
         }
-    } };
+    };
 }

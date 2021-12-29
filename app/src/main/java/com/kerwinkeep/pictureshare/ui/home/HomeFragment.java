@@ -94,19 +94,19 @@ public class HomeFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MainActivityPost---", "连接失败" + e.getLocalizedMessage());
+                Log.d("Home", "连接失败" + e.getLocalizedMessage());
             }
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
                 String result = Objects.requireNonNull(response.body()).string();
-                Log.d("MainActivityPost---", result);
+                Log.d("Home", result);
                 List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(PictureParseTool.jsonJXGetPicture(result));
                 Message message = new Message();
                 message.obj = list;
                 message.what = 1;
                 handler.sendMessage(message);
-                Log.d("MainActivityPost---", "成功");
+                Log.d("Home", "成功");
                 Objects.requireNonNull(response.body()).close();
             }
         });
@@ -128,9 +128,6 @@ public class HomeFragment extends Fragment {
                     picture.setAuthor(map.get("author").toString());
                     pictureList.add(picture);
                 };
-//                pictureAdapter = new PictureAdapter(getActivity());
-//                recyclerView.setAdapter(pictureAdapter);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                 MutableLiveData<List<Picture>> livePictureList = homeViewModel.getLivePictureList();
                 livePictureList.setValue(pictureList);
                 homeViewModel.setLivePictureList(livePictureList);
