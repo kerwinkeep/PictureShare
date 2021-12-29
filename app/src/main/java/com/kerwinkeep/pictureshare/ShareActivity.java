@@ -61,7 +61,6 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         } else if (R.id.buttonUpload == id) {
             if(picture != null){
                 uploadPicture( PictureParseTool.bitmapToString(picture), editTextUploadTitle.getText().toString());
-                Log.d("upload", "已经运行");
                 Intent intent = new Intent(this, IndexActivity.class);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
@@ -76,7 +75,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         /// 激活系统图库，选择一张图片
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
+
         startActivityForResult(intent, 1);
     }
 
@@ -94,7 +93,8 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void uploadPicture(String pictureData,String title){//发送上传请求
+    public void uploadPicture(String pictureData,String title){
+
         String url="http://10.0.2.2:8081/picture/uploadPicture";
 //        String url="http://35.241.95.124:8081/picture/uploadPicture";
         OkHttpClient client=new OkHttpClient();
@@ -118,18 +118,18 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MainActivityPost---", "连接失败" + e.getLocalizedMessage());
+                Log.d("upload", "连接失败" + e.getLocalizedMessage());
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 if(result.trim().equals("Upload complete.")){
-                    Log.d("上传成功---", result);
+                    Log.d("upload", result);
                     Message message= new Message();
                     message.obj = result;
                     message.what = 3; handler.sendMessage(message);
                 }else
-                    Log.d("上传失败---", result);
+                    Log.d("upload", result);
                 response.body().close();
             }
         });
@@ -138,10 +138,9 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
     Handler handler = new Handler(Looper.getMainLooper())
     { public void handleMessage(Message msg) {
         switch (msg.what) {
-            case 2://点赞，成功时该cardview 的zan加1  /////////
+            case 2:
                 break;
-            case 3://上传
-                // ////////
+            case 3:
                 break;
         }
     } };

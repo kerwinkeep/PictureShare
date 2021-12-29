@@ -2,8 +2,6 @@ package com.kerwinkeep.pictureshare.bean;
 
 import android.graphics.Bitmap;
 
-import java.util.Date;
-
 public class Picture {
 
     String id;

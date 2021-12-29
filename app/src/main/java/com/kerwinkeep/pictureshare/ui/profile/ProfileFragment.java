@@ -82,6 +82,8 @@ public class ProfileFragment extends Fragment {
     }
 
     public void getPersonPicture(){
+
+//        String url="http://35.241.95.124:8081/picture/getPersonPictures";
         String url="http://10.0.2.2:8081/picture/getPersonPictures";
         OkHttpClient client=new OkHttpClient();
         HashMap<String,String> map=new HashMap<>();
@@ -124,7 +126,7 @@ public class ProfileFragment extends Fragment {
     Handler handler = new Handler(Looper.getMainLooper()) {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case 1://获取主页面数据
+                case 1:
                     List<Picture> pictureList = new ArrayList<>() ;
                     List<Map<String, Object>> list = ( List<Map<String, Object>>) msg.obj;
                     for(int i = 0 ; i < list.size() ; i ++){

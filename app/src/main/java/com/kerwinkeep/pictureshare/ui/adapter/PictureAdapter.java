@@ -79,7 +79,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PictureViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PictureViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imageViewPicture.setImageBitmap(pictureList.get(position).getPictureData());
         holder.textViewTitle.setText(pictureList.get(position).getTitle());
         holder.textViewAuthor.setText(pictureList.get(position).getAuthor());
@@ -163,6 +163,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
 
     public void giveLike(String pictureId) {
 
+//        String url="http://35.241.95.124:8081/picture/giveLike";
         String url = "http://10.0.2.2:8081/picture/giveLike";
         OkHttpClient client = new OkHttpClient();
         //构建表单参数

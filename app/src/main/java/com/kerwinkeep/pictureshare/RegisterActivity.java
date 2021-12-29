@@ -26,7 +26,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextAccount;
     private EditText editTextPassword;
@@ -45,7 +45,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("register", "点击了");
                 String account = editTextAccount.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String name = editTextName.getText().toString();
@@ -57,14 +56,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-//        if (R.id.buttonCreateAccount)
-    }
 
     public void register(String name, String account, String password) {
 
+//        String url="http://35.241.95.124:8081/user/register";
         String url = "http://10.0.2.2:8081/user/register";
         OkHttpClient client = new OkHttpClient();
         //添加请求体
@@ -86,20 +81,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MainActivityPost---", "连接失败" + e.getLocalizedMessage());
+                Log.d("register", "连接失败" + e.getLocalizedMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 if (result.trim().equals("Success.")) {
-                    Log.d("注册成功---", result);
+                    Log.d("register", result);
                     Message message = new Message();
                     message.obj = result;
                     message.what = 1;
                     handler.sendMessage(message);
                 } else
-                    Log.d("注册失败---", result);
+                    Log.d("register", result);
                 Message message = new Message();
                 message.obj = result;
                 message.what = 2;

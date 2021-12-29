@@ -28,7 +28,7 @@ public class PictureParseTool {
         return BitmapFactory.decodeByteArray(decode, 0, decode.length);
     }
 
-    public static List<Map<String, Object>> jsonJXGetPicture(String data) {//解析json数据
+    public static List<Map<String, Object>> jsonJXGetPicture(String data) {
 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         if(data != null) {

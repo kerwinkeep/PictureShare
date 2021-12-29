@@ -1,5 +1,6 @@
 package com.kerwinkeep.pictureshare.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -82,7 +83,7 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PersonPictureViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PersonPictureViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.imageViewPicture.setImageBitmap(pictureList.get(position).getPictureData());
         holder.textViewTitle.setText(pictureList.get(position).getTitle());
         holder.textViewLikeNum.setText(String.valueOf(pictureList.get(position).getLikeNum()));
@@ -95,8 +96,8 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
                 }
                 try {
                     FileOutputStream fileOutputStream = new FileOutputStream(file);
-                    Bitmap bitMap = ((BitmapDrawable) holder.imageViewPicture.getDrawable()).getBitmap();//通过强制转化weiBitmapDrable然后获取Bitmap
-                    bitMap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);//然后按照指定的图片格式转换，并以stream方式保存文件
+                    Bitmap bitMap = ((BitmapDrawable) holder.imageViewPicture.getDrawable()).getBitmap();   //通过强制转化weiBitmapDrable然后获取Bitmap
+                    bitMap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);              //然后按照指定的图片格式转换，并以stream方式保存文件
                     Toast toast = Toast.makeText(context,
                             "保存成功",
                             Toast.LENGTH_SHORT);
@@ -115,8 +116,8 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
                         null,
                         null));
                 Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_SEND);//设置分享行为
-                intent.setType("image/*");//设置分享内容的类型
+                intent.setAction(Intent.ACTION_SEND);   //设置分享行为
+                intent.setType("image/*");              //设置分享内容的类型
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
                 intent = Intent.createChooser(intent, "分享");
                 context.startActivity(intent);
@@ -136,6 +137,7 @@ public class PersonPictureAdapter extends RecyclerView.Adapter<PersonPictureAdap
     }
 
     private void deletePicture(String id) {
+//        String url="http://35.241.95.124:8081/picture/deletePicture";
         String url="http://10.0.2.2:8081/picture/deletePicture";
         OkHttpClient client = new OkHttpClient();
         HashMap<String,String> map = new HashMap<>();
